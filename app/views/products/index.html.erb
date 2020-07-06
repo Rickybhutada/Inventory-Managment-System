@@ -1,0 +1,41 @@
+<h1> All Products </h1>
+<% if @product.any? %>
+  <%= link_to 'New Warehouse', new_warehouse_path %>
+<% end %>
+<table id="product-table">
+  <thead>
+  <tr>
+    <% @header.each do |header| %>
+        <% next if skip_record_if_is_color_header(header) %>
+        <th>
+          <%= header.include?('_warehouse') ? get_warehouse_name(header) : header %>
+        </th>
+    <% end %>
+  </tr>
+  </thead>
+  <tbody>
+  <% if @product.any? %>
+    <% @product.each do |product| %>
+        <tr>
+          <% @header.each do |header| %>
+              <% next if skip_record_if_is_color_header(header) %>
+              <% if header.include?('sku_code') %>
+                  <td>
+                    <%= link_to product[header], edit_stocks_path(product["id"]) %>
+                  </td>
+              <% else %>
+                  <td class="<%= ("red" if check_product_below_threshold(header, product)) %>">
+                    <%= product[header] %>
+                  </td>
+              <% end %>
+
+          <% end %>
+        </tr>
+    <% end %>
+  <% else %>
+  <tr>
+    <td> No products Available </td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>

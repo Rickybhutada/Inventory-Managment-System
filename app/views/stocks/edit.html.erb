@@ -1,0 +1,30 @@
+<h1> Stocks Edit </h1>
+
+<%= form_for(@stock, :url => update_stocks_path, :method => 'post', id: 'stock_update_form') do |f|%>
+    <table>
+      <tr>
+        <th> Name </th>
+        <td><%= f.text_field :name, value: @stock.product.name,readonly: true %></td>
+        <td><%= f.hidden_field :product_id%></td>
+      </tr>
+      <tr>
+        <th> Warehouse </th>
+        <td><%= f.select :warehouse_id, options_for_select(Warehouse.all.map{ |s| [s[:name], s[:id]]}, @stock.warehouse_id)%></td>
+      </tr>
+      <tr>
+        <th> Item Count </th>
+        <td><%=f.text_field :item_count, required: true %></td>
+      </tr>
+      <tr>
+        <th> Low Item Threshold </th>
+        <td><%=f.text_field :low_item_threshold, required: true %></td>
+      </tr>
+      <tr>
+        <td>
+          <%= f.submit('Update Stock')%>
+        </td>
+      </tr>
+
+    </table>
+
+<% end%>

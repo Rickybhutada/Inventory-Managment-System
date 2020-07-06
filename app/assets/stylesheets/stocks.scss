@@ -1,0 +1,42 @@
+// Place all the styles related to the Stocks controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+#product-table {
+  width:100%;
+  border: 1px solid black;
+  border-collapse: collapse;
+
+  th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  th, td {
+    padding: 15px;
+    text-align: left;
+  }
+
+  tr:nth-child(even) {
+    background-color: #eee;
+  }
+
+  tr:nth-child(odd) {
+    background-color: #fff;
+  }
+
+  th {
+    background-color: black;
+    color: white;
+  }
+
+  .red{
+    color: red
+  }
+}
+
+#stock_warehouse_id{
+  width:100%
+}
+

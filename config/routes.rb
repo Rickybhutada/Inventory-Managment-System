@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+
+  get 'warehouses/new'
+  get 'warehouses/create'
+  root to: 'products#index'
+  get 'stocks/edit/:id' => 'stocks#edit', as: :edit_stocks
+  post 'stocks/update' => 'stocks#update', as: :update_stocks
+  get 'stocks/get_stock' => 'stocks#get_stock', as: :get_stock
+  get 'warehouses/new' => 'warehouses#new', as: :new_warehouse
+  post 'warehouses/create' => 'warehouses#create', as: :create_warehouse
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

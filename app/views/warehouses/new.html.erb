@@ -1,0 +1,36 @@
+<h1> Warehouse Create </h1>
+
+<%= form_for(@warehouse, :url => create_warehouse_path, :method => 'post', id: 'warehouse_create_form') do |f|%>
+
+    <% if @warehouse.errors.any? %>
+        <h1> Errors </h1>
+        <ul>
+          <% @warehouse.errors.full_messages.each do |message|%>
+            <li> <%= message %> </li>
+          <% end %>
+        </ul>
+    <% end %>
+    <table>
+      <tr>
+        <th> Name </th>
+        <td><%= f.text_field :name %></td>
+      </tr>
+      <tr>
+        <th> Wh Code </th>
+        <td><%= f.text_field :wh_code %></td>
+      </tr>
+      <tr>
+        <th> Pincode </th>
+        <td><%= f.text_field :pincode %></td>
+      </tr>
+      <tr>
+        <th> Max Capacity </th>
+        <td><%=f.text_field :max_capacity %></td>
+      </tr>
+      <tr>
+        <td>
+          <%= f.submit('Update Stock')%>
+        </td>
+      </tr>
+    </table>
+<% end%>
